@@ -4,7 +4,7 @@ requires = ['flit_core >=3.4,<4']
 build-backend = 'flit_core.buildapi'
 
 [project]
-name = 'aiida-declarative'
+name = 'aiida_declarative'
 dynamic = ['version']
 authors = [{name = 'louisponet', email = 'louisponet@epfl.ch'}]
 readme = 'README.md'
