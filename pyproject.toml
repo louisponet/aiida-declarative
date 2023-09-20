@@ -22,7 +22,7 @@ requires-python = '>=3.8'
 
 dependencies = [
     'aiida-core>=2.1.0,<3',
-    'aiida-pseudo>=0.8.0,<2'
+    'aiida-pseudo>=0.8.0,<2',
     'jsonref>=1.1.0,<1.1.1',
     'ruamel.yaml>=0.17.23,<0.17.33',
     'cachecontrol>=0.13.1,<0.13.2',
