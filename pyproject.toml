@@ -1,0 +1,90 @@
+
+[build-system]
+requires = ['flit_core >=3.4,<4']
+build-backend = 'flit_core.buildapi'
+
+[project]
+name = 'aiida-declarative'
+dynamic = ['version']
+authors = [{name = 'louisponet', email = 'louisponet@epfl.ch'}]
+readme = 'README.md'
+license = {file = 'LICENSE'}
+description = "declarative workchain for aiida"
+classifiers = [
+    'License :: OSI Approved :: MIT License',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+]
+requires-python = '>=3.8'
+
+dependencies = [
+    'aiida-core>=2.1.0,<3',
+    'jsonref>=1.1.0,<1.1.1',
+    'ruamel.yaml>=0.17.23,<0.17.33',
+    'cachecontrol>=0.13.1,<0.13.2',
+]
+
+[project.urls]
+Home = 'https://github.com/louisponet/aiida-declarative'
+Source = 'https://github.com/louisponet/aiida-declarative'
+
+[project.entry-points.'aiida.calculations']
+'aiida_declarative.fake_qe_pw' = 'aiida_declarative.calculations.fake:FakeQEPW'
+
+
+[project.entry-points.'aiida.workflows']
+'aiida_declarative.declarative' = 'aiida_declarative.workchains.declarative_chain:DeclarativeChain'
+
+[tool.flit.module]
+name = 'aiida_declarative'
+
+[tool.flynt]
+line-length = 120
+fail-on-change = true
+
+[tool.isort]
+force_sort_within_sections = true
+include_trailing_comma = true
+line_length = 120
+multi_line_output = 3  # this configuration is compatible with yapf
+
+[tool.pydocstyle]
+ignore = [
+    'D104',
+    'D202',
+    'D203',
+    'D213'
+]
+
+[tool.pylint.format]
+max-line-length = 120
+
+[tool.pylint.tool-check]
+generated-members = 'self.exit_codes.*'
+
+[tool.pylint.messages_control]
+disable = [
+    'duplicate-code',
+    'fixme',
+    'inconsistent-return-statements',
+    'import-outside-toplevel',
+    'locally-disabled',
+    'logging-format-interpolation',
+    'no-else-raise',
+    'too-many-arguments',
+    'too-many-ancestors',
+    'too-many-branches',
+    'too-many-locals',
+    'use-dict-literal',
+]
+
+[tool.setuptools.package-data]
+execflow = [
+    "entities/*.json"
+]
+
+[project.optional-dependencies]
+tests = ["pytest~=7.0"]
